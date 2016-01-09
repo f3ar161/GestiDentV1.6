@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet name="css/login.css"/>
+    </h:head>
+    <h:body>
+        <div class="conteiner">
+           
+            <h:form id="formLogin">
+                
+                <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"></h:outputLink>
+                 <p:growl id="growl" showDetail="true" life="3000" />
+  
+                <p:panel header="Ingresar Usuario y Clave"  >
+                            <h:panelGrid columns="2" cellpadding="5">
+
+                              <h:outputLabel for="username" value="Cedula:" />
+                              <p:inputText id="username" value="" required="true" label="username" />
+
+                              <h:outputLabel for="password" value="Password:" />
+                              <p:password id="password" value="" required="true" label="password" />
+
+                              <f:facet name="footer">
+                                  <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login(event)}" icon=""
+                                                   oncomplete="handleLoginRequest(xhr, status, args)" />
+                                  
+                                  <h:link outcome="/paciente/Registrarse" value="Desea Registrarse?"/>
+                              </f:facet>  
+                              
+                            </h:panelGrid>
+               </p:panel>
+                 
+            </h:form>
+        </div>
+    <script type="text/javascript">
+        function handleLoginRequest(xhr, status, args) {
+            if(args.validationFailed || !args.loggedIn) {
+                PF('dlg').jq.effect("shake", {times:5}, 100);
+                
+            }
+            else {
+                location.href=args.ruta;
+            }
+        }
+    </script>   
+    </h:body>
+</html>
