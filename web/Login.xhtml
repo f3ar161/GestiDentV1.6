@@ -19,8 +19,8 @@ and open the template in the editor.
             <h:form id="formLogin">
                 
                 <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"></h:outputLink>
-                 <p:growl id="growl" showDetail="true" life="3000" />
-  
+                <p:growl id="growl" showDetail="true" life="3000" />
+                
                 <p:panel header="Ingresar Usuario y Clave"  >
                             <h:panelGrid columns="2" cellpadding="5">
 
@@ -31,10 +31,13 @@ and open the template in the editor.
                               <p:password id="password" value="" required="true" label="password" />
 
                               <f:facet name="footer">
-                                  <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login(event)}" icon=""
+                                  <p:commandButton  icon = "ui-icon-key" value="Iniciar Sesión" update="growl" actionListener="#{userLoginView.login(event)}" icon=""
                                                    oncomplete="handleLoginRequest(xhr, status, args)" />
                                   
+                                  <h:column/>
                                   <h:link outcome="/paciente/Registrarse" value="Desea Registrarse?"/>
+                                  <p:separator/>
+                                  
                               </f:facet>  
                               
                             </h:panelGrid>
